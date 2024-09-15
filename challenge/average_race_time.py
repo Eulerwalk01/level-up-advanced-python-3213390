@@ -6,14 +6,21 @@ import datetime
 
 def get_data():
     """Return content from the 10k_racetimes.txt file"""
-    with open('10k_racetimes.txt', 'rt') as file:
+    #with open('10k_racetimes.txt', 'rt') as file:
+    with open('challenge/10k_racetimes.txt', 'rt') as file:
         content = file.read()
     return content
 
 def get_rhines_times():
     """Return a list of Jennifer Rhines' race times"""
     races = get_data()
-    pass
+    searchstring = 'Jennifer Rhines'
+    for race in races:
+        athlete = race['Athlete']
+        if not athlete.find(searchstring) == -1:
+            racetime =race['TIME']
+            print(racetime)
+
 
 def get_average():
     """Return Jennifer Rhines' average race time in the format:
@@ -23,3 +30,5 @@ def get_average():
        M corresponds to a milliseconds digit (no rounding, just the single digit)"""
     racetimes = get_rhines_times()
     pass
+
+
